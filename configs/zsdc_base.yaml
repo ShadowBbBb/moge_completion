@@ -1,0 +1,32 @@
+# Override paths using CLI or a server-local copy of this configuration.
+data:
+  root: null
+  train_list: assets/robby_simval_train.txt
+  val_list: assets/robby_simval_val.txt
+  split: val
+  raw_invalid: [0, 65535]
+  gt_invalid: [0, 65535]
+  depth_kind: z
+  gt_depth_kind: z
+  resolution:
+    max_pixels: 90000
+models:
+  - version: v3
+    checkpoint: Ruicheng/moge-3-vitl
+    device: cuda:0
+    num_tokens: 1200
+    refine_steps: 3
+    use_fp16: false
+    fov_policy: auto
+    full_matrix: true
+  - version: v2
+    checkpoint: Ruicheng/moge-2-vitl-normal
+    device: cuda:0
+    num_tokens: 1200
+    refine_steps: 0
+    use_fp16: false
+    fov_policy: auto
+    full_matrix: false
+output: results/phase1
+cache: results/baseline_cache
+audit_dir: results/model_audit

@@ -1,5 +1,21 @@
 # MoGe: Accurate Monocular Geometry Estimation
 
+## Training-free depth completion (Phase 0–1)
+
+This fork adds an independent `zsdc` package for frozen MoGe-2/3 output-space depth completion. The original `moge/` inference path is unchanged. Start with [the server guide](docs/server_run.md), [source audit](docs/source_audit.md), and [experiment protocol](docs/experiment_protocol.md).
+
+```bash
+pip install -r requirements-zsdc-cpu.txt
+python -m pytest -q tests
+python -m zsdc.scripts.synthetic_smoke --output results/phase1_synthetic
+# With server paths/checkpoints configured:
+bash launch_zsdc.sh preflight --limit 8
+bash launch_zsdc.sh audit_model --limit 8
+bash launch_zsdc.sh evaluate --limit 2 --output results/server_smoke
+```
+
+Real GPU parity and dataset results must be generated on the server. Synthetic diagnostics are explicitly labeled and do not establish MoGe accuracy. SSR guidance/training are outside this release. Original upstream documentation follows.
+
 MoGe is a powerful model for recovering 3D geometry from monocular open-domain images, including metric point maps, metric depth maps, normal maps and camera FOV. ***Check our websites ([MoGe-1](https://wangrc.site/MoGePage), [MoGe-2](https://wangrc.site/MoGe2Page), [MoGe-3](https://qft-333.github.io/moge3page/)) for videos and interactive results!***
 
 ## 📖 Publications

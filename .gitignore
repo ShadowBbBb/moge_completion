@@ -423,3 +423,10 @@ FodyWeavers.xsd
 /tmp
 /tensorboard
 /wandb
+
+# ZSDC local datasets, caches, audit reports and experiment outputs
+/results/
+/assets/robby_simval_train.txt
+/assets/robby_simval_val.txt
+__pycache__/
+.pytest_cache/

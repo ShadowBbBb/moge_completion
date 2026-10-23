@@ -39,6 +39,8 @@ Issues = "https://github.com/microsoft/MoGe/issues"
 moge = "moge.scripts.cli:main"
 
 [project.optional-dependencies]
+zsdc = ["PyYAML>=6"]
+zsdc-test = ["PyYAML>=6", "pytest>=8"]
 train = [
   "accelerate>=1.12.0",
   "sympy>=1.12",
@@ -49,7 +51,7 @@ train = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["moge*"]
+include = ["moge*", "zsdc*"]
 
 [tool.setuptools.package-data]
 "moge.utils.gradio_3d_viewer" = ["viewer.html", "assets/*.js", "assets/LICENSE"]
