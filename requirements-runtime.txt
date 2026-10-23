@@ -1,0 +1,12 @@
+# MoGe CLI 推理所需运行时依赖（不含 gradio/starlette，它们仅 Web 演示需要）
+# opencv 固定 4.10.0.84：OpenCV 5.0 headless 缺少 EXR writer，写 depth.exr 会报错
+click>=8.3.1
+numpy>=2
+opencv-python-headless==4.10.0.84
+scipy>=1.8
+pillow
+matplotlib
+trimesh>=4.11
+huggingface-hub
+requests
+tqdm
